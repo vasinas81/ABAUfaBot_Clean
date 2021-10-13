@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ABAUfaBot.WebAPI", "ABAUfaB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ABAUfaBot.Tests", "ABAUfaBot.Tests", "{2BCA730F-4A47-44B4-BC3D-4A58C6E26409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABAUfaBot.Application", "ABAUfaBot.Application\ABAUfaBot.Application.csproj", "{2F36AED8-E844-49DD-810E-8E3875DEDF1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABAUfaBot.Application", "ABAUfaBot.Application\ABAUfaBot.Application.csproj", "{2F36AED8-E844-49DD-810E-8E3875DEDF1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABAUfaBot.Domain", "ABAUfaBot.Domain\ABAUfaBot.Domain.csproj", "{CC933DD6-A23D-48B6-B17F-A1F960EBC2E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABAUfaBot.Domain", "ABAUfaBot.Domain\ABAUfaBot.Domain.csproj", "{CC933DD6-A23D-48B6-B17F-A1F960EBC2E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABAUfaBot.Infrastructure", "ABAUfaBot.Infrastructure\ABAUfaBot.Infrastructure.csproj", "{322535EC-FA14-444B-AD1A-25E58A728515}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABAUfaBot.Infrastructure", "ABAUfaBot.Infrastructure\ABAUfaBot.Infrastructure.csproj", "{322535EC-FA14-444B-AD1A-25E58A728515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABAUfaBot.WebAPI", "ABAUfaBot.WebAPI\ABAUfaBot.WebAPI.csproj", "{B6D87397-9F72-4B60-99D3-1585DF9A3A83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABAUfaBot.WebAPI", "ABAUfaBot.WebAPI\ABAUfaBot.WebAPI.csproj", "{B6D87397-9F72-4B60-99D3-1585DF9A3A83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

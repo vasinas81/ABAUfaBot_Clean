@@ -7,7 +7,7 @@ namespace ABBAUfaTBot.Application.Factories
         ISendMessageFactory
     {
         public SendMessage Create(
-            Update botData)
+            UpdateMessage botData)
         {
             return new SendMessage
             {

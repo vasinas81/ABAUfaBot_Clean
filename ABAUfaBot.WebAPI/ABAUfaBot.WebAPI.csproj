@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ABAUfaBot.Application\ABAUfaBot.Application.csproj" />
+    <ProjectReference Include="..\ABAUfaBot.Infrastructure\ABAUfaBot.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

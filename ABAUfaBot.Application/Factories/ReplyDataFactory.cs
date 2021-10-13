@@ -8,7 +8,7 @@ namespace ABBAUfaTBot.Application.Factories
             IReplyDataFactory
     {
         public IReplyData Create(
-            Update updateData)
+            UpdateMessage updateData)
         {
             return new ReplyData
             {

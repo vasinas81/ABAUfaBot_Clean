@@ -3,7 +3,7 @@
 namespace ABBAUfaTBot.Application.Interfaces
 {
     public interface ISendMessageFactory :
-        IFactory<Update, SendMessage>
+        IFactory<UpdateMessage, SendMessage>
     {
     }
 }
