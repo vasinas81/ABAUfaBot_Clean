@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ABAUfaBot.Domain;
-using ABBAUfaTBot.Application.Interfaces;
+using ABAUfaBot.Application.Interfaces;
 
-namespace ABBAUfaTBot.Application.BotCommands
+namespace ABAUfaBot.Application.BotCommands
 {
     public class UnknownUserCommand : IBotCommand
     {
@@ -12,9 +12,9 @@ namespace ABBAUfaTBot.Application.BotCommands
         public string Name { get; } = "UnknownUser";
         public IReadOnlyCollection<string> Parameters { get; }
 
-        private readonly IPerson _personInChat;
+        private readonly IABAUser _personInChat;
 
-        public UnknownUserCommand(IPerson personInChat)
+        public UnknownUserCommand(IABAUser personInChat)
         {
             _personInChat = personInChat;
         }

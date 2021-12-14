@@ -1,6 +1,6 @@
-﻿using ABBAUfaTBot.Application.Interfaces;
+﻿using ABAUfaBot.Application.Interfaces;
 
-namespace ABBAUfaTBot.Application.Models
+namespace ABAUfaBot.Application.Models
 {
     internal class ReplyData :
         IReplyData

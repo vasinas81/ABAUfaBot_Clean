@@ -1,20 +1,15 @@
-﻿
-using ABAUfaBot.Domain;
+﻿using System;
 using System.Collections.Generic;
 
-namespace ABAGoogleDocs.Models
+namespace ABAUfaBot.Domain
 {
-    public class ABAPerson : IPerson
+    public interface IABAUser
     {
         public string Name { get; set; }
         public string Account { get; set; }
-        public bool isAuthorized { get; set; }
         public string Role { get; set; }
+        public bool isAuthorized { get; set; }
         public List<string> ChildNames { get; set; }
-        public  string TableId { get; set; }
-
-        public ABAPerson()
-        { }
-
+        public string TableId { get; set; }
     }
 }

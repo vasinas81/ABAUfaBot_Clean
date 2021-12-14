@@ -1,17 +1,17 @@
 ﻿using ABAUfaBot.Domain;
-using ABBAUfaTBot.Application.BotCommands;
-using ABBAUfaTBot.Application.Interfaces;
-using ABBAUfaTBot.Application.Models;
+using ABAUfaBot.Application.BotCommands;
+using ABAUfaBot.Application.Interfaces;
+using ABAUfaBot.Application.Models;
 using System.Text.RegularExpressions;
 
-namespace ABBAUfaTBot.Application.Factories
+namespace ABAUfaBot.Application.Factories
 {
     public class BotCommandFactory : IBotCommandFactory
     {
         private readonly Regex CommandRegex = new Regex(@"^\/(?<command>[^\s_]+)([\s_]+(?<parameter>[^\s_]+))*$");
-        private readonly IPerson _personInChat;
+        private readonly IABAUser _personInChat;
 
-        public BotCommandFactory(IPerson personInChat)
+        public BotCommandFactory(IABAUser personInChat)
         {
             _personInChat = personInChat;
         }
@@ -36,7 +36,8 @@ namespace ABBAUfaTBot.Application.Factories
                     switch (match.Groups["command"].Value)
                     {
                         case "day":
-                            botCommand = new GetScheduleCommand(_personInChat, _tableDataProvider);
+                            //botCommand = new GetScheduleCommand(_personInChat, _tableDataProvider);
+                            botCommand = new DefaultCommand(_personInChat);
                             break;
                         default:
                             botCommand = new DefaultCommand(_personInChat);

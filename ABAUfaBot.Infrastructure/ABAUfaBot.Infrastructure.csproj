@@ -12,4 +12,8 @@
     <ProjectReference Include="..\ABAUfaBot.Application\ABAUfaBot.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
 </Project>

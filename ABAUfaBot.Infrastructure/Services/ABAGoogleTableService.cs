@@ -4,25 +4,24 @@ using Google.Apis.Services;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using ABAUfaBot.Application.Interfaces;
 
-namespace ABAUfaBot.Infrastructure.ABAGoogleTableService
+namespace ABAUfaBot.Infrastructure.Services
 {
-    public class ABAGoogleTableService
+    public class ABAGoogleTableService : IABAGoogleTableService
     {
         private string _serviceActEmail = string.Empty;
         private string _serviceAppName = string.Empty;
         private string _privateKey = string.Empty;
         private SheetsService currentSheetsService = null;
 
-        public ABAGoogleTableService(
-            string serviceActEmail,
-            string serviceAppName,
-            string privateKey
-            )
+        public ABAGoogleTableService(IABAGoogleTableServiceOptions options)
         {
-            _serviceActEmail = serviceActEmail;
-            _serviceAppName = serviceAppName;
-            _privateKey = privateKey;            
+            _serviceActEmail = options.ServiceActEmail;
+            _serviceAppName = options.ServiceAppName;
+            _privateKey = options.PrivateKey;
+
+            currentSheetsService = GetService();
         }
 
         private SheetsService GetService()
@@ -51,7 +50,7 @@ namespace ABAUfaBot.Infrastructure.ABAGoogleTableService
             return currentSheetsService;
         }
 
-        public IList<IList<Object>> ReadGoogleSheet(string spreadsheetId, string range)
+        private IList<IList<Object>> ReadGoogleSheet(string spreadsheetId, string range)
         {
             var tableService = this.GetService();
 

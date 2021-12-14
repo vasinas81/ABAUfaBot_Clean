@@ -1,5 +1,5 @@
 ﻿
-namespace ABBAUfaTBot.Application.Models
+namespace ABAUfaBot.Application.Models
 {
     public class Chat
     {

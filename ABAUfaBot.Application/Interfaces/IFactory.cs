@@ -1,5 +1,5 @@
 ﻿
-namespace ABBAUfaTBot.Application.Interfaces
+namespace ABAUfaBot.Application.Interfaces
 {
     public interface IFactory<Product>
     {

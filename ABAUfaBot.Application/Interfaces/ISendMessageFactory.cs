@@ -1,6 +1,6 @@
-﻿using ABBAUfaTBot.Application.Models;
+﻿using ABAUfaBot.Application.Models;
 
-namespace ABBAUfaTBot.Application.Interfaces
+namespace ABAUfaBot.Application.Interfaces
 {
     public interface ISendMessageFactory :
         IFactory<UpdateMessage, SendMessage>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ABAGoogleDocs;
 
-namespace ABBAUfaTBot.Application.Interfaces
+namespace ABAUfaBot.Application.Interfaces
 {
     public interface IBotCommand
     {

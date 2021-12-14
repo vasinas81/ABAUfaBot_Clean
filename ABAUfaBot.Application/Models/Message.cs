@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace ABBAUfaTBot.Application.Models
+namespace ABAUfaBot.Application.Models
 {
     public class Message
     {

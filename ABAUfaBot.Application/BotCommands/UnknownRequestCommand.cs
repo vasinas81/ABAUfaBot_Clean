@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ABAUfaBot.Domain;
-using ABBAUfaTBot.Application.Interfaces;
+using ABAUfaBot.Application.Interfaces;
 
-namespace ABBAUfaTBot.Application.BotCommands
+namespace ABAUfaBot.Application.BotCommands
 {
     public class UnknownRequestCommand : IBotCommand
     {
         public string Name { get; } = "Default";
         public IReadOnlyCollection<string> Parameters { get; }
 
-        private readonly IPerson _personInChat;
+        private readonly IABAUser _personInChat;
 
-        public UnknownRequestCommand(IPerson personInChat)
+        public UnknownRequestCommand(IABAUser personInChat)
         {
             _personInChat = personInChat;
         }

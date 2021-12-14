@@ -1,7 +1,7 @@
-﻿using ABBAUfaTBot.Application.Interfaces;
-using ABBAUfaTBot.Application.Models;
+﻿using ABAUfaBot.Application.Interfaces;
+using ABAUfaBot.Application.Models;
 
-namespace ABBAUfaTBot.Application.Factories
+namespace ABAUfaBot.Application.Factories
 {
     public class SendMessageFactory :
         ISendMessageFactory
