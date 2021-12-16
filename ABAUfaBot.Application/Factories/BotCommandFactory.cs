@@ -1,48 +1,58 @@
-﻿using ABAUfaBot.Domain;
-using ABAUfaBot.Application.BotCommands;
-using ABAUfaBot.Application.Interfaces;
+﻿using ABAUfaBot.Application.Interfaces;
 using ABAUfaBot.Application.Models;
 using System.Text.RegularExpressions;
+using MediatR;
+using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownRequestResponse;
+using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultResponse;
+using ABAUfaBot.Domain;
+using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownUserResponse;
 
 namespace ABAUfaBot.Application.Factories
 {
     public class BotCommandFactory : IBotCommandFactory
     {
         private readonly Regex CommandRegex = new Regex(@"^\/(?<command>[^\s_]+)([\s_]+(?<parameter>[^\s_]+))*$");
-        private readonly IABAUser _personInChat;
 
-        public BotCommandFactory(IABAUser personInChat)
+        public BotCommandFactory()
         {
-            _personInChat = personInChat;
+
         }
 
-        public IBotCommand GetCommand(UpdateMessage updateMessage)
+        public IRequest<string> Create(UpdateMessage updateMessage, IABAUser registeredUser)
         {
             var match = CommandRegex.Match(updateMessage.message.text);
-            IBotCommand botCommand;
+            IRequest<string> botCommand;
 
-            if (!_personInChat.isAuthorized)
+            if (!registeredUser.isAuthorized)
+                return new GetUnknownUserResponseQuery
+                {
+                    RegisteredUser = registeredUser
+                };
+
+            if (!match.Success)
             {
-                botCommand = new UnknownUserCommand(_personInChat);
+                botCommand = new GetUnknownRequestResponse
+                {
+                    RegisteredUser = registeredUser
+                };
             }
             else
             {
-                if (!match.Success)
+                switch (match.Groups["command"].Value)
                 {
-                    botCommand = new UnknownRequestCommand(_personInChat);
-                }
-                else
-                {
-                    switch (match.Groups["command"].Value)
-                    {
-                        case "day":
-                            //botCommand = new GetScheduleCommand(_personInChat, _tableDataProvider);
-                            botCommand = new DefaultCommand(_personInChat);
-                            break;
-                        default:
-                            botCommand = new DefaultCommand(_personInChat);
-                            break;
-                    }
+                    case "day":
+                        //botCommand = new GetScheduleCommand(_personInChat, _tableDataProvider);
+                        botCommand = new GetDefaultResponse
+                        {
+                            RegisteredUser = registeredUser
+                        };
+                        break;
+                    default:
+                        botCommand = new GetDefaultResponse
+                        {
+                            RegisteredUser = registeredUser
+                        };
+                        break;
                 }
             }
             return botCommand;

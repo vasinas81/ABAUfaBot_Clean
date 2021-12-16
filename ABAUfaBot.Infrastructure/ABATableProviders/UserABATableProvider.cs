@@ -1,7 +1,6 @@
 ﻿using ABAGoogleDocs.Models;
 using ABAUfaBot.Application.Interfaces;
 using ABAUfaBot.Domain;
-using ABAUfaBot.Infrastructure.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,9 +12,9 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
         private const string _spreadsheetId = "1nvTf3kF80pZs97l5SvX6eF45Q6Ti5UOOxWW0Xcwm92A";
         private const string _range = "Persons!A:D";
 
-        public ABAGoogleTableService _currentABAGoogleTableService { get; }
+        public IABAGoogleTableService _currentABAGoogleTableService { get; }
 
-        public UserABATableProvider(ABAGoogleTableService currentABAGoogleTableService)
+        public UserABATableProvider(IABAGoogleTableService currentABAGoogleTableService)
         {
             _currentABAGoogleTableService = currentABAGoogleTableService;
         }
@@ -49,8 +48,13 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
         public async Task<IABAUser> ReadByNameAsync(string userName)
         {
             List<IABAUser> usersList = await ReadAllAsync();
-
-            return usersList.Where(u => u.Name == userName).FirstOrDefault();
+            var user = usersList.Where(u => u.Account == userName).FirstOrDefault();
+            if (user == null) user = new ABAUser
+            {
+                 Account = userName,
+                 isAuthorized = false
+            };
+            return user;
         }
     }
 }

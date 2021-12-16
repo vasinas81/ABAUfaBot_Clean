@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using ABAUfaBot.Domain;
-using ABAUfaBot.Application.Factories;
 using ABAUfaBot.Application.Interfaces;
 using ABAUfaBot.Application.Models;
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
+using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownUserResponse;
 
 namespace ABAUfaBot.WebAPI.Controllers
 {
@@ -15,13 +16,19 @@ namespace ABAUfaBot.WebAPI.Controllers
     {
         private readonly ISendMessageFactory _sendMessageFactory;
         private readonly IUserABATableProvider _userABATableProvider;
+        private readonly IBotCommandFactory _botCommandFactory;
+        private readonly IMediator _mediator;
 
         public UpdatesController(
             ISendMessageFactory sendMessageFactory,
-            IUserABATableProvider userABATableProvider)
+            IUserABATableProvider userABATableProvider,
+            IBotCommandFactory botCommandFactory,
+            IMediator mediator)
         {
             _sendMessageFactory = sendMessageFactory;
             _userABATableProvider = userABATableProvider;
+            _botCommandFactory = botCommandFactory;
+            _mediator = mediator;
         }
 
         /// <summary>
@@ -32,18 +39,14 @@ namespace ABAUfaBot.WebAPI.Controllers
         [HttpPost]
         public async Task<SendMessage> PostUpdate(UpdateMessage updateMessage)
         {
+            var msg = _sendMessageFactory.Create(updateMessage);
             IABAUser incomingUser = await _userABATableProvider.ReadByNameAsync(updateMessage.message.from.username);
 
-            var msg = _sendMessageFactory.Create(updateMessage);
+            var botCommand = _botCommandFactory.Create(updateMessage, incomingUser);
 
-            //ABAUserAuthorizer userAuthorizer = new(_tableDataProvider);
-            //IABAUser personInChat = await userAuthorizer.GetAuthorizerUserByAccountAsync(updateMessage.message.from.username);
-
-            //var commandFactory = new BotCommandFactory(personInChat);
-            //msg.text = await commandFactory.GetCommand(updateMessage).RunAsync();
+            msg.text = await _mediator.Send(botCommand);
 
             return msg;
         }
-
     }
 }

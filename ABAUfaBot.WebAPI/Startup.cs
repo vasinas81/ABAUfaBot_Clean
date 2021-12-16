@@ -1,6 +1,10 @@
+using ABAUfaBot.Application;
 using ABAUfaBot.Application.Common.Mappings;
+using ABAUfaBot.Application.Factories;
 using ABAUfaBot.Application.Interfaces;
 using ABAUfaBot.WebApi;
+using ABAUfaBot.WebAPI.Extensions;
+using ABAUfaBot.WebAPI.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -27,13 +31,19 @@ namespace ABAUfaBot.WebAPI
                 config.AddProfile(new AssemblyMappingProfile(typeof(IABAGoogleTableService).Assembly));
             });
             services.AddControllers();
-
+            services.AddApplication();
             services.AddVersionedApiExplorer(options =>
                 options.GroupNameFormat = "'v'VVV");
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>,
                     ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
             services.AddApiVersioning();
+
+            services.AddSingleton<IAdminOptions>(g => Configuration.GetSection(nameof(AdminOptions)).Get<AdminOptions>());
+            services.SetupGoogleTables(Configuration);
+            services.AddSingleton<ISendMessageFactory, SendMessageFactory>();
+            services.AddSingleton<IBotCommandFactory, BotCommandFactory>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
