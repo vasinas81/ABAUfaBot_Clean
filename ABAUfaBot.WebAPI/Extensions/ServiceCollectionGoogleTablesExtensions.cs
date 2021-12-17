@@ -14,7 +14,8 @@ namespace ABAUfaBot.WebAPI.Extensions
             
             service.AddSingleton<IABAGoogleTableService>(g => new ABAGoogleTableService(googleTableServiceOptions));
             service.AddSingleton<IUserABATableProvider, UserABATableProvider>();
-            
+            service.AddSingleton<IScheduleABATableProvider, SheduleABATableProvider>();
+
             return service;
         }
     }
