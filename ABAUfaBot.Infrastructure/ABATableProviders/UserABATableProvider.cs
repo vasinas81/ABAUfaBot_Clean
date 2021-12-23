@@ -33,7 +33,7 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
                     Role = userRow.ToArray()[2].ToString(),
                 };
 
-                if (user.Role == "employee")
+                if (user.Role == "mentor")
                 {
                     if (userRow.ToArray().Length > 2)
                     {
@@ -51,9 +51,10 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
             var user = usersList.Where(u => u.Account == userName).FirstOrDefault();
             if (user == null) user = new ABAUser
             {
-                 Account = userName,
-                 isAuthorized = false
+                Account = userName,
+                isAuthorized = false
             };
+            else user.isAuthorized = true;
             return user;
         }
     }
