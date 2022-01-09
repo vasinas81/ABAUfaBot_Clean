@@ -33,7 +33,7 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
                     Role = userRow.ToArray()[2].ToString(),
                 };
 
-                if (user.Role == "mentor")
+                if (user.Role == UserRoles.mentor)
                 {
                     if (userRow.ToArray().Length > 2)
                     {
