@@ -2,7 +2,7 @@
 
 namespace ABAUfaBot.Domain
 {
-    class DomainEnumsConverter
+    public class DomainEnumsConverter
     {
         public static UserRoles? ConvertRole(string role)
         {
