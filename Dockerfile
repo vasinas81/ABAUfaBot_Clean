@@ -5,6 +5,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG CONFIGURATION
 
+ENV ASPNETCORE_Environment=Production
+
 WORKDIR /src
 COPY ["ABAUfaBot.WebAPI/ABAUfaBot.WebAPI.csproj", "main/ABAUfaBot.WebAPI/"]
 COPY ["ABAUfaBot.Infrastructure/ABAUfaBot.Infrastructure.csproj", "main/ABAUfaBot.Infrastructure/"]
@@ -35,3 +37,4 @@ EXPOSE 80
 EXPOSE 443
 
 ENTRYPOINT ["dotnet", "ABAUfaBot.WebAPI.dll"]
+CMD ["dotnet", "ABAUfaBot.WebAPI.dll"]
