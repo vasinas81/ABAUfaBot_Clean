@@ -25,33 +25,21 @@ namespace ABAUfaBot.Application.Factories
             IRequest<string> botCommand;
 
             if (!registeredUser.isAuthorized)
-                return new GetUnknownUserResponseQuery
-                {
-                    RegisteredUser = registeredUser
-                };
+                return new GetUnknownUserResponseQuery { RegisteredUser = registeredUser };
 
             if (!match.Success)
             {
-                botCommand = new GetUnknownRequestResponse
-                {
-                    RegisteredUser = registeredUser
-                };
+                botCommand = new GetUnknownRequestResponse { RegisteredUser = registeredUser };
             }
             else
             {
                 switch (match.Groups["command"].Value)
                 {
                     case "day":
-                        botCommand = new GetMentorDailyScheduleQuery
-                        {
-                            RegisteredUser = registeredUser
-                        };
+                        botCommand = new GetMentorDailyScheduleQuery { RegisteredUser = registeredUser };
                         break;
                     default:
-                        botCommand = new GetDefaultResponse
-                        {
-                            RegisteredUser = registeredUser
-                        };
+                        botCommand = new GetDefaultResponse { RegisteredUser = registeredUser };
                         break;
                 }
             }

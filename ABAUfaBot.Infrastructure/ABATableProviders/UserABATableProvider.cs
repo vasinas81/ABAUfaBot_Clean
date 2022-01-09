@@ -30,10 +30,10 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
                 {
                     Account = userRow.ToArray()[0].ToString(),
                     Name = userRow.ToArray()[1].ToString(),
-                    Role = userRow.ToArray()[2].ToString(),
+                    Role = DomainEnumsConverter.ConvertRole(userRow.ToArray()[2].ToString()),
                 };
 
-                if (user.Role == "mentor")
+                if (user.Role == UserRoles.mentor)
                 {
                     if (userRow.ToArray().Length > 2)
                     {
