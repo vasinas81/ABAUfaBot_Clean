@@ -3,6 +3,7 @@ using ABAUfaBot.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,13 +35,14 @@ namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorSch
             }
 
             string scheduleStrings = string.Empty;
+            StringBuilder scheduleSummator = new StringBuilder();
             if (scheduleRecords.Count != 0)
             {
                 foreach (IABAScheduleRecord scheduleRecord in scheduleRecords)
                 {
-                    scheduleStrings +=
-                        string.Format("{1} : {0} \n", scheduleRecord.ChildName, scheduleRecord.TimeField);
+                    scheduleSummator.Append(string.Format("{1} : {0} \n", scheduleRecord.ChildName, scheduleRecord.TimeField));
                 }
+                scheduleStrings = scheduleSummator.ToString();
             }
             else
             {

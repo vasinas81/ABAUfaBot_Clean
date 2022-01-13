@@ -12,7 +12,6 @@ namespace ABAUfaBot.Application.Factories
             return new SendMessage
             {
                 chat_id = (botData.message.chat != null) ? botData.message.chat.id : 0,
-                reply_to_message_id = botData.message.message_id,
             };
         }
     }
