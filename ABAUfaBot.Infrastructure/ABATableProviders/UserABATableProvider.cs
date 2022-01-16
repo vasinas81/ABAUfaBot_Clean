@@ -40,6 +40,16 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
                         user.TableId = userRow.ToArray()[3].ToString();
                     }
                 }
+                else
+                if (user.Role == UserRoles.client)
+                {
+                    if (userRow.ToArray().Length > 3)
+                    {
+                        user.ChildNames = new List<string>();
+                        user.ChildNames.Add(userRow.ToArray()[3].ToString());
+                        if (userRow.ToArray().Length > 4) { user.ChildNames.Add(userRow.ToArray()[4].ToString()); }
+                    }
+                }
                 usersList.Add(user);
             }
             return usersList;
@@ -56,6 +66,13 @@ namespace ABAUfaBot.Infrastructure.ABATableProviders
             };
             else user.isAuthorized = true;
             return user;
+        }
+
+        public async Task<List<IABAUser>> ReadByRoleAsync(UserRoles role)
+        {
+            List<IABAUser> usersList = await ReadAllAsync();
+            var neededUsersList = usersList.Where(u => u.Role == role).ToList();
+            return neededUsersList;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ABAUfaBot.Application.Factories
             return new SendMessage
             {
                 chat_id = (botData.message.chat != null) ? botData.message.chat.id : 0,
+                parse_mode = "html"
             };
         }
     }

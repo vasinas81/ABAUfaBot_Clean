@@ -7,6 +7,7 @@ using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultResponse;
 using ABAUfaBot.Domain;
 using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownUserResponse;
 using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorSchedule;
+using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientSchedule;
 
 namespace ABAUfaBot.Application.Factories
 {
@@ -36,7 +37,14 @@ namespace ABAUfaBot.Application.Factories
                 switch (match.Groups["command"].Value)
                 {
                     case "day":
-                        botCommand = new GetMentorDailyScheduleQuery { RegisteredUser = registeredUser };
+                        if (registeredUser.Role == UserRoles.client)
+                        {
+                            botCommand = new GetClientDailyScheduleQuery { RegisteredUser = registeredUser };
+                        }
+                        else
+                        {
+                            botCommand = new GetMentorDailyScheduleQuery { RegisteredUser = registeredUser };
+                        }
                         break;
                     default:
                         botCommand = new GetDefaultResponse { RegisteredUser = registeredUser };
