@@ -8,5 +8,6 @@ namespace ABAUfaBot.Application.Interfaces
     {
         Task<List<IABAUser>> ReadAllAsync();
         Task<IABAUser> ReadByNameAsync(string userName);
+        Task<List<IABAUser>> ReadByRoleAsync(UserRoles role);
     }
 }
