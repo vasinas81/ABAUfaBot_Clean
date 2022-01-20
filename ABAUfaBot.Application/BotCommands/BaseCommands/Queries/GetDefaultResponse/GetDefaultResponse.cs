@@ -1,10 +1,11 @@
-﻿using ABAUfaBot.Domain;
-using MediatR;
+﻿using ABAUfaBot.Application.Interfaces;
+using ABAUfaBot.Domain;
 
 namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultResponse
 {
-    public class GetDefaultResponse : IRequest<string>
+    public class GetDefaultResponse : IABABotQuery
     {
         public IABAUser RegisteredUser { get; set; }
+        public string Key { get; } = "defaultresponse";
     }
 }

@@ -3,6 +3,6 @@ namespace ABAUfaBot.Application.Models
 {
     public class Chat
     {
-        public int id { get; set; }
+        public long id { get; set; }
     }
 }

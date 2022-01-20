@@ -1,18 +1,13 @@
-﻿using ABAUfaBot.Domain;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownRequestResponse
+namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownRequestResponse
 {
-    public class GetOnknownRequestResponseHandler :
+    public class GetUnknownRequestResponseHandler :
         IRequestHandler<GetUnknownRequestResponse, string>
     {
-        public GetOnknownRequestResponseHandler()
+        public GetUnknownRequestResponseHandler()
         {
 
         }
