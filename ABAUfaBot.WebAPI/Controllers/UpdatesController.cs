@@ -39,15 +39,9 @@ namespace ABAUfaBot.WebAPI.Controllers
         public async Task<SendMessage> PostUpdate(UpdateMessage updateMessage)
         {
             var msg = _sendMessageFactory.Create(updateMessage);
-            if (updateMessage != null)
-            {
-                IABAUser incomingUser = await _userABATableProvider.ReadByNameAsync(updateMessage.message.from.username);
-                msg.text = await _botCommandFactory.Execute(updateMessage, incomingUser);
-            }
-            else
-            {
-                msg.text = "Body \n" + HttpContext.Request.Body;
-            }
+            
+            IABAUser incomingUser = await _userABATableProvider.ReadByNameAsync(updateMessage.message.from.username);
+            msg.text = await _botCommandFactory.Execute(updateMessage, incomingUser);
 
             return msg;
         }
