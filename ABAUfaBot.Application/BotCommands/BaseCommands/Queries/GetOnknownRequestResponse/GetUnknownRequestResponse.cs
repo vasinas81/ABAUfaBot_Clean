@@ -1,10 +1,12 @@
-﻿using ABAUfaBot.Domain;
+﻿using ABAUfaBot.Application.Interfaces;
+using ABAUfaBot.Domain;
 using MediatR;
 
-namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownRequestResponse
+namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownRequestResponse
 {
-    public class GetUnknownRequestResponse : IRequest<string>
+    public class GetUnknownRequestResponse : IABABotQuery
     {
         public IABAUser RegisteredUser { get; set; }
+        public string Key { get; } = "unknownresponse";
     }
 }

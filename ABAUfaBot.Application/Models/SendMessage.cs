@@ -9,9 +9,9 @@
 
         public string text { get; set; }
 
-        public int chat_id { get; set; }
+        public long chat_id { get; set; }
 
-        public int reply_to_message_id { get; set; }
+        public long reply_to_message_id { get; set; }
 
         public SendMessage() : base("sendMessage")
         {

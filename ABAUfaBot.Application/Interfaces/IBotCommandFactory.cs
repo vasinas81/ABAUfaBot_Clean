@@ -1,11 +1,11 @@
 ﻿using ABAUfaBot.Application.Models;
 using ABAUfaBot.Domain;
-using MediatR;
+using System.Threading.Tasks;
 
 namespace ABAUfaBot.Application.Interfaces
 {
     public interface IBotCommandFactory
     {
-        IRequest<string> Create(UpdateMessage updateMessage, IABAUser registeredUser);
+        Task<string> Execute(UpdateMessage updateMessage, IABAUser registeredUser);
     }
 }

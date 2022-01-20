@@ -3,6 +3,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using ABAUfaBot.Application.Interfaces;
 using ABAUfaBot.Application.Common.RangeProviders;
+using ABAUfaBot.Application.BotCommands;
 
 namespace ABAUfaBot.Application
 {
@@ -12,6 +13,7 @@ namespace ABAUfaBot.Application
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSingleton<IABATableRangeProvider, ABATableRangeProvider>();
+            services.AddABABotCommandsServices();
             return services;
         }
     }

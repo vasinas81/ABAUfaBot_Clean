@@ -5,7 +5,7 @@ namespace ABAUfaBot.Application.Models
     public class Message
     {
         public long Id { get; set; }
-        public int message_id { get; set; }
+        public long message_id { get; set; }
         public User from { get; set; }
         public Chat chat { get; set; }
         public string text { get; set; }

@@ -1,10 +1,9 @@
 ﻿using ABAUfaBot.Application.Interfaces;
-using ABAUfaBot.Domain;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetOnknownUserResponse
+namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownUserResponse
 {
     public class GetUnknownUserResponseHandler :
         IRequestHandler<GetUnknownUserResponseQuery, string>
