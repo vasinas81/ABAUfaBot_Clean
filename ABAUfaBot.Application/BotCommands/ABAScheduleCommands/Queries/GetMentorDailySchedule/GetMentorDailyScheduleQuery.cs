@@ -23,6 +23,8 @@ namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorDai
                     int day = 0;
                     res = int.TryParse(addParams.First(), out day);
                     if (res)
+                        res &= ((day > 0) && (day <= DateTime.DaysInMonth(ScheduleDay.Year, ScheduleDay.Month)));
+                    if (res)
                         ScheduleDay = ScheduleDay.AddDays(day - ScheduleDay.Day);
                 }
             }
