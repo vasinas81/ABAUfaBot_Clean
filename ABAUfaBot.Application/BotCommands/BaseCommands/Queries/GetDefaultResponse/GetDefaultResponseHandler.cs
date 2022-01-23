@@ -20,7 +20,7 @@ namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultRespo
 
         public async Task<string> Handle(GetDefaultResponse request, CancellationToken cancellationToken)
         {
-            return string.Format("Welcome, {0}", request.RegisteredUser.Name);
+            return string.Format("Привет, {0}!", request.RegisteredUser.Name);
         }
     }
 }

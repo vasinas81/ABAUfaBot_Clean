@@ -7,5 +7,7 @@ namespace ABAUfaBot.Application.Interfaces
     {
         IABAUser RegisteredUser { get; set; }
         string Key { get; }
+
+        bool SetAdditionalParameters(params string[] addParams);
     }
 }

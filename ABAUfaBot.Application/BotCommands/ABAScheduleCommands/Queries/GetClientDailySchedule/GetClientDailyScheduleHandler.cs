@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientSchedule
+namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientDailySchedule
 {
     public class GetClientDailyScheduleHandler :
         IRequestHandler<GetClientDailyScheduleQuery, string>
@@ -29,7 +29,7 @@ namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientSch
 
         public async Task<string> Handle(GetClientDailyScheduleQuery request, CancellationToken cancellationToken)
         {
-            var dailyRange = _ABATableRangeProvider.GetDailyScheduleRange(DateTime.Today);
+            var dailyRange = _ABATableRangeProvider.GetDailyScheduleRange(request.ScheduleDay);
 
             var mentorsList = await _userABATableProvider.ReadByRoleAsync(UserRoles.mentor);
             StringBuilder scheduleSummator = new StringBuilder();

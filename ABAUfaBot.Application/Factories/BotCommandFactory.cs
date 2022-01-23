@@ -30,6 +30,7 @@ namespace ABAUfaBot.Application.Factories
             var match = CommandRegex.Match(updateMessage.message.text);
 
             string commandKey = string.Empty;
+            string[] parameters = null;
 
             if (!registeredUser.isAuthorized)
             { 
@@ -43,6 +44,7 @@ namespace ABAUfaBot.Application.Factories
             else
             {
                 commandKey = match.Groups["command"].Value + registeredUser.Role.ToString();
+                parameters = match.Groups["parameter"].Captures.Select(s => s.Value).ToArray();
             }
 
             IABABotQuery ABABotQuery = _services.FirstOrDefault(o => o.Key.Equals(commandKey)); ;
@@ -51,6 +53,7 @@ namespace ABAUfaBot.Application.Factories
                 ABABotQuery = new GetDefaultResponse();
             }
             ABABotQuery.RegisteredUser = registeredUser;
+            ABABotQuery.SetAdditionalParameters(parameters);
 
             return await _mediator.Send(ABABotQuery);
         }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorSchedule
+namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorDailySchedule
 {
     public class GetMentorDailyScheduleHandler :
         IRequestHandler<GetMentorDailyScheduleQuery, string>
