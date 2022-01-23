@@ -46,7 +46,7 @@ namespace ABAUfaBot.WebAPI
             services.AddApiVersioning();
 
             services.AddSingleton<ISendMessageFactory, SendMessageFactory>();
-            services.AddSingleton<IBotCommandFactory, BotCommandFactory>();
+            services.AddSingleton<IBotCommandSelector, BotCommandSelector>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
