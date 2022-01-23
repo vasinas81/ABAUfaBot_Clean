@@ -1,4 +1,5 @@
-﻿using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientDailySchedule;
+﻿using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetABABotHelp;
+using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientDailySchedule;
 using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorDailySchedule;
 using ABAUfaBot.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ namespace ABAUfaBot.Application.BotCommands
         {
             services.AddTransient<IABABotQuery, GetMentorDailyScheduleQuery>();
             services.AddTransient<IABABotQuery, GetClientDailyScheduleQuery>();
+            services.AddTransient<IABABotQuery, GetABABotHelpQuery>();
 
             return services;
         }

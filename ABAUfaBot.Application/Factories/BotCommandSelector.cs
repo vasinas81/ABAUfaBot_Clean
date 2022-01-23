@@ -48,7 +48,7 @@ namespace ABAUfaBot.Application.Factories
             {
                 string commandKey = match.Groups["command"].Value + registeredUser.Role.ToString();
                 string[] parameters = match.Groups["parameter"].Captures.Select(s => s.Value).ToArray();
-                IABABotQuery ABABotQuery = _services.FirstOrDefault(o => o.Key.Equals(commandKey)); ;
+                IABABotQuery ABABotQuery = _services.FirstOrDefault(o => commandKey.Contains(o.Key));
                 if (ABABotQuery != null)
                 {
                     ABABotQuery.RegisteredUser = registeredUser;

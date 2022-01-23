@@ -25,7 +25,7 @@ namespace ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorDai
 
         public async Task<string> Handle(GetMentorDailyScheduleQuery request, CancellationToken cancellationToken)
         {
-            var dailyRange = _ABATableRangeProvider.GetDailyScheduleRange(DateTime.Today);
+            var dailyRange = _ABATableRangeProvider.GetDailyScheduleRange(request.ScheduleDay);
 
             List<IABAScheduleRecord> scheduleRecords = null;
             try
