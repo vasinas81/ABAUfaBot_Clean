@@ -2,12 +2,8 @@
 using ABAUfaBot.Application.Models;
 using System.Text.RegularExpressions;
 using MediatR;
-using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownRequestResponse;
 using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultResponse;
 using ABAUfaBot.Domain;
-using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownUserResponse;
-using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorSchedule;
-using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientSchedule;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,7 +29,6 @@ namespace ABAUfaBot.Application.Factories
         {
             var match = CommandRegex.Match(updateMessage.message.text);
 
-            IABABotQuery botCommand;
             string commandKey = string.Empty;
 
             if (!registeredUser.isAuthorized)
@@ -43,28 +38,11 @@ namespace ABAUfaBot.Application.Factories
             else
             if (!match.Success)
             {
-                botCommand = new GetUnknownRequestResponse { RegisteredUser = registeredUser };
                 commandKey = "unknownresponse";
             }
             else
             {
                 commandKey = match.Groups["command"].Value + registeredUser.Role.ToString();
-                switch (match.Groups["command"].Value)
-                {
-                    case "day":
-                        if (registeredUser.Role == UserRoles.client)
-                        {
-                            botCommand = new GetClientDailyScheduleQuery { RegisteredUser = registeredUser };
-                        }
-                        else
-                        {
-                            botCommand = new GetMentorDailyScheduleQuery { RegisteredUser = registeredUser };
-                        }
-                        break;
-                    default:
-                        botCommand = new GetDefaultResponse { RegisteredUser = registeredUser };
-                        break;
-                }
             }
 
             IABABotQuery ABABotQuery = _services.FirstOrDefault(o => o.Key.Equals(commandKey)); ;
