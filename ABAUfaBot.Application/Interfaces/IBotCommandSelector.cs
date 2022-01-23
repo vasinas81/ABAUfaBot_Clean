@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ABAUfaBot.Application.Interfaces
 {
-    public interface IBotCommandFactory
+    public interface IBotCommandSelector
     {
         Task<string> Execute(UpdateMessage updateMessage, IABAUser registeredUser);
     }

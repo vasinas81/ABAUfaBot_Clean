@@ -3,10 +3,6 @@ using ABAUfaBot.Domain;
 using ABAUfaBot.Application.Interfaces;
 using ABAUfaBot.Application.Models;
 using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownUserResponse;
-using System;
-using Newtonsoft.Json.Linq;
 
 namespace ABAUfaBot.WebAPI.Controllers
 {
@@ -18,12 +14,12 @@ namespace ABAUfaBot.WebAPI.Controllers
     {
         private readonly ISendMessageFactory _sendMessageFactory;
         private readonly IUserABATableProvider _userABATableProvider;
-        private readonly IBotCommandFactory _botCommandFactory;
+        private readonly IBotCommandSelector _botCommandFactory;
 
         public UpdatesController(
             ISendMessageFactory sendMessageFactory,
             IUserABATableProvider userABATableProvider,
-            IBotCommandFactory botCommandFactory)
+            IBotCommandSelector botCommandFactory)
         {
             _sendMessageFactory = sendMessageFactory;
             _userABATableProvider = userABATableProvider;
