@@ -19,7 +19,7 @@ namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownUserR
 
         public async Task<string> Handle(GetUnknownUserResponseQuery request, CancellationToken cancellationToken)
         {
-            return string.Format("Unknown user {0}, please, write message to {1}, he will add you",
+            return string.Format("Неизвестный пользователь {0}, напишите, пожалуйста {1} для добавления нового пользователя",
                 request.RegisteredUser.Account,
                 _adminOptions.AdminEmail
                 );

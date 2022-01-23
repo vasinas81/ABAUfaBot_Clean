@@ -14,7 +14,7 @@ namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownReque
 
         public async Task<string> Handle(GetUnknownRequestResponse request, CancellationToken cancellationToken)
         {
-            return string.Format("The request cannot be recognized, User account - {0}", request.RegisteredUser.Account);
+            return string.Format("Формат команды неизвестен, наберите /help для просмотра справки!");
         }
     }
 }

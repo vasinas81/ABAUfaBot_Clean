@@ -7,5 +7,10 @@ namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownUserR
     {
         public IABAUser RegisteredUser { get; set; }
         public string Key { get; } = "unknownuser";
+
+        public bool SetAdditionalParameters(params string[] addParams) 
+        {
+            return true;
+        }
     }
 }

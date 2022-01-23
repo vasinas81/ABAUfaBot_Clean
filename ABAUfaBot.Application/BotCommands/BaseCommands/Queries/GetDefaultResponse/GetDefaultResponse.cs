@@ -7,5 +7,10 @@ namespace ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultRespo
     {
         public IABAUser RegisteredUser { get; set; }
         public string Key { get; } = "defaultresponse";
+
+        public bool SetAdditionalParameters(params string[] addParams)
+        {
+            return true;
+        }
     }
 }

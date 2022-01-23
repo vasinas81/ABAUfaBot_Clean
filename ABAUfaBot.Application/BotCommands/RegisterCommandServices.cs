@@ -1,5 +1,5 @@
-﻿using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientSchedule;
-using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorSchedule;
+﻿using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetClientDailySchedule;
+using ABAUfaBot.Application.BotCommands.ABAUserCommands.Queries.GetMentorDailySchedule;
 using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetDefaultResponse;
 using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownRequestResponse;
 using ABAUfaBot.Application.BotCommands.BaseCommands.Queries.GetUnknownUserResponse;
